@@ -25,7 +25,7 @@ DB_PASSWORD = os.getenv('db_password')
 DB_HOST = os.getenv("db_host")
 DB_NAME = os.getenv("db_name")
 DB_USER = os.getenv("db_user")
-# DB_VB_PASSWORD = os.getenv('db_vb_password')
+ DB_VB_PASSWORD = os.getenv('db_vb_password')
 HYPIXEL = os.getenv('hypixel_key')
 DBL = [os.getenv("dbl1"), os.getenv("dbl2")]
 DONATEBOT_SECRET = os.getenv('donatebot_secret')
@@ -73,7 +73,7 @@ async def cc(self, uid=None):
 bot.cc = cc.__get__(bot)  # Bind the async cc() method to the bot class without subclassing commands.AutoShardedBot
 
 # Don't even think about it Hg
-# bot.cc = discord.Color.gold()  # color of the embeds
+ bot.cc = discord.Color.gold()  # color of the embeds
 bot.guild_invite_code = "MZ2cXxF"
 bot.support_guild_id = 718983582898585602
 bot.error_channel_id = 718983583779520541
@@ -101,12 +101,12 @@ async def setup_dbs():
         password=DB_PASSWORD
     )
 
-    # bot.db_villager_bot = await asyncpg.create_pool(
-    #     host="localhost",
-    #     database="villagerbot",
-    #     user="pi",
-    #     password=DB_VB_PASSWORD
-    # )
+     bot.db_villager_bot = await asyncpg.create_pool(
+         host="localhost",
+         database="villagerbot",
+         user="pi",
+         password=DB_VB_PASSWORD
+     )
 
 
 asyncio.get_event_loop().run_until_complete(setup_dbs())
