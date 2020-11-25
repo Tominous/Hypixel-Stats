@@ -34,7 +34,7 @@ class Settings(commands.Cog):
             embed = discord.Embed(color=await self.bot.cc(ctx.author.id))
             embed.set_author(name="Bot Configuration", icon_url=str(self.bot.user.avatar_url_as(static_format="png")))
             embed.add_field(name="Prefix", value=f"`{ctx.prefix}config prefix <prefix>`")
-            embed.add_field(name="Embed Color", value=f"`{ctx.prefix}config color <color>`")
+            embed.add_field(name="Embed Colour", value=f"`{ctx.prefix}config color <colour>`")
 
             embed.add_field(name="\uFEFF", value="\uFEFF", inline=False)
 
@@ -76,7 +76,7 @@ class Settings(commands.Cog):
             return
         if color is None:
             embed = discord.Embed(color=await self.bot.cc(ctx.author.id), title=f"The current embed color is:")
-            # embed.set_image(url=f"http://singlecolorimage.com/get/{hex(await self.db.get_color(ctx.author.id)).replace('0x', '')}/200x75")
+             embed.set_image(url=f"http://singlecolorimage.com/get/{hex(await self.db.get_color(ctx.author.id)).replace('0x', '')}/200x75")
             embed.set_image(
                 url=f"http://singlecolorimage.com/get/{hex(await self.db.get_color(ctx.author.id)).replace('0x', '')}/200x75")
             await ctx.send(embed=embed)
@@ -85,7 +85,7 @@ class Settings(commands.Cog):
             if color.lower() in list(self.colors):
                 await self.db.set_color(ctx.author.id, self.colors.get(color.lower()).value)
                 embed = discord.Embed(color=await self.bot.cc(ctx.author.id),
-                                      title=f"The new embed color is:")
+                                      title=f"The new embed colour is:")
                 embed.set_image(
                     url=f"http://singlecolorimage.com/get/{hex(self.colors.get(color.lower()).value).replace('0x', '')}/200x75")
                 await ctx.send(embed=embed)
@@ -93,7 +93,7 @@ class Settings(commands.Cog):
                 valid_colors_text = "`" + "`, `".join(list(self.colors)) + "`"
                 await ctx.send(embed=discord.Embed(color=await self.bot.cc(ctx.author.id),
                                                    description=f"\"{discord.utils.escape_markdown(color)}\""
-                                                               f"is not an allowed/valid color.\n\n Valid colors: {valid_colors_text}"))
+                                                               f"is not an allowed/valid colour.\n\n Valid colours: {valid_colors_text}"))
 
     @config.command(name="disable_channel",
                     aliases=["disablechannel", "disable", "enable", "reenable", "reenablechannel"])
